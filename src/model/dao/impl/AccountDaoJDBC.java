@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.*;
 
 public class AccountDaoJDBC implements AccountDao {
-    public Connection conn;
+    private final Connection conn;
 
     public AccountDaoJDBC(Connection conn) {
         this.conn = conn;
@@ -98,22 +98,21 @@ public class AccountDaoJDBC implements AccountDao {
 
 
     @Override
-    public Account findByNumber(String number) {
+    public Account findById(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
         try {
             st = conn.prepareStatement("SELECT a.*,h.name,h.document,h.birthDate FROM account a INNER JOIN " +
                     "holder h " +
-                    "ON a.holder = h.id WHERE a.number = ?");
-            st.setString(1,number);
+                    "ON a.holder = h.id WHERE a.id = ?");
+            st.setInt(1,id);
             rs = st.executeQuery();
 
             if (rs.next()) {
                 Holder holder = instantiateHolder(rs);
 
-                Account acc = instantiateAccount(rs,holder);
-                return acc;
+                return instantiateAccount(rs,holder);
             }
             return null;
         } catch (SQLException exception) {
@@ -131,7 +130,7 @@ public class AccountDaoJDBC implements AccountDao {
 
         try {
             st = conn.prepareStatement("SELECT a.*,h.name,h.document,h.birthDate FROM account a " +
-                    "INNER JOIN holder h ON a.holder = h.id ORDER BY h.name");
+                    "INNER JOIN holder h ON a.holder = h.id");
 
             rs = st.executeQuery();
 

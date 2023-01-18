@@ -12,7 +12,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Util {
+import db.DB;
+
+public class Menu {
+	
+	private static final Scanner scanner = new Scanner(System.in);
 
     public static void createAccount() throws ParseException {
 
@@ -21,9 +25,8 @@ public class Util {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("Your name: ");
+        scanner.nextLine();
         String name = scanner.nextLine();
 
         System.out.print("Document: ");
@@ -32,7 +35,7 @@ public class Util {
         System.out.print("Birth date (dd/mm/yyyy): ");
         String date = scanner.nextLine();
 
-        String number = generateNumber();
+        String number = generateAccountNumber();
 
         System.out.print("Initial balance: ");
         double balance = scanner.nextDouble();
@@ -45,7 +48,7 @@ public class Util {
         accountDao.insert(acc);
     }
 
-    public static String generateNumber() {
+    public static String generateAccountNumber() {
         Random rd = new Random();
         String number = "";
         for (int i = 0; i < 8; i++) {
@@ -57,43 +60,39 @@ public class Util {
 
     public static void transfer() {
         AccountDao accountDao = DaoFactory.createAccountDao();
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter the account number that will transfer the money: ");
-        String number1 = input.nextLine();
-        System.out.print("Enter the account number that will receive the money: ");
-        String number2 = input.nextLine();
+        System.out.print("Enter the account id that will transfer the money: ");
+        Integer id1 = scanner.nextInt();
+        System.out.print("Enter the account id that will receive the money: ");
+        Integer id2 = scanner.nextInt();
         System.out.print("Enter the transfer amount: ");
-        double amount = input.nextDouble();
+        double amount = scanner.nextDouble();
 
-        Account acc1 = accountDao.findByNumber(number1);
-        Account acc2 = accountDao.findByNumber(number2);
+        Account acc1 = accountDao.findById(id1);
+        Account acc2 = accountDao.findById(id2);
 
         accountDao.transfer(acc1,acc2,amount);
     }
 
     public static void deposit() {
         AccountDao accountDao = DaoFactory.createAccountDao();
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter the account number: ");
-        String number = input.nextLine();
+        System.out.print("Enter the account id: ");
+        Integer id = scanner.nextInt();
         System.out.print("Enter the deposit amount: ");
-        double amount = input.nextDouble();
+        double amount = scanner.nextDouble();
 
-        Account acc = accountDao.findByNumber(number);
+        Account acc = accountDao.findById(id);
 
         accountDao.deposit(acc,amount);
-
     }
 
     public static void withdraw() {
         AccountDao accountDao = DaoFactory.createAccountDao();
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter the account number: ");
-        String number = input.nextLine();
+        System.out.print("Enter the account id: ");
+        Integer id = scanner.nextInt();
         System.out.print("Enter the withdraw amount: ");
-        double amount = input.nextDouble();
+        double amount = scanner.nextDouble();
 
-        Account acc = accountDao.findByNumber(number);
+        Account acc = accountDao.findById(id);
 
         accountDao.withdraw(acc,amount);
     }
@@ -109,7 +108,6 @@ public class Util {
     public static void menu() throws ParseException {
 
         while (true) {
-            Scanner input = new Scanner(System.in);
             System.out.println("=======================================================");
             System.out.println("                            MENU");
             System.out.println("=======================================================");
@@ -118,10 +116,11 @@ public class Util {
                     2- Deposit
                     3- Withdraw
                     4- Transfer
-                    5- List all accounts and break menu
+                    5- List all accounts
+                    6- Break menu
                     """);
             System.out.print("Choice: ");
-            int choice = input.nextInt();
+            int choice = scanner.nextInt();
 
             if (choice == 1) {
                 createAccount();
@@ -137,9 +136,13 @@ public class Util {
             }
             if (choice == 5) {
                 listAll();
-                input.close();
-                break;
+            }
+            if (choice == 6) {
+            	System.out.println("END");
+            	break;
             }
         }
+        scanner.close();
+        DB.closeConnection();
     }
 }

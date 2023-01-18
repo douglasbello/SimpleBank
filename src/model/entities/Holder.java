@@ -56,7 +56,7 @@ public class Holder implements Serializable {
 
     @Override
     public String toString() {
-        return "Holder{" +
+        return "{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", document='" + document + '\'' +

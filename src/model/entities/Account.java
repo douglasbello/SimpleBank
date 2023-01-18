@@ -2,7 +2,6 @@ package model.entities;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Random;
 
 public class Account implements Serializable {
     @Serial
@@ -71,8 +70,8 @@ public class Account implements Serializable {
         return "Account{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
+                ", balance= R$" + String.format("%.2f",balance) +
                 ", holder=" + holder +
-                ", balance=" + balance +
                 '}';
     }
 }

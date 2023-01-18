@@ -9,7 +9,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 
 public class HolderDaoJDBC implements HolderDao {
-    private Connection conn;
+    private final Connection conn;
 
     public HolderDaoJDBC(Connection conn) {
         this.conn = conn;
