@@ -1,0 +1,19 @@
+CREATE DATABASE bank;
+
+USE bank;
+
+CREATE TABLE holder (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT ,
+  name VARCHAR(100) ,
+  document VARCHAR(12) ,
+  birthDate DATE
+);
+
+
+CREATE TABLE account (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT ,
+  number VARCHAR(8) ,
+  balance DOUBLE ,
+  holder INT NOT NULL ,
+  FOREIGN KEY (holder) REFERENCES holder (id)
+);
