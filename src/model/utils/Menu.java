@@ -17,11 +17,10 @@ import db.DB;
 public class Menu {
 	
 	private static final Scanner scanner = new Scanner(System.in);
+	private static final AccountDao accountDao = DaoFactory.createAccountDao();
+	private static final HolderDao holderDao = DaoFactory.createHolderDao();
 
     public static void createAccount() throws ParseException {
-
-        AccountDao accountDao = DaoFactory.createAccountDao();
-        HolderDao holderDao = DaoFactory.createHolderDao();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -41,7 +40,6 @@ public class Menu {
         double balance = scanner.nextDouble();
 
         Holder hd = new Holder(name,document,sdf.parse(date));
-
         Account acc = new Account(number,balance,hd);
 
         holderDao.insert(hd);
@@ -59,7 +57,6 @@ public class Menu {
     }
 
     public static void transfer() {
-        AccountDao accountDao = DaoFactory.createAccountDao();
         System.out.print("Enter the account id that will transfer the money: ");
         Integer id1 = scanner.nextInt();
         System.out.print("Enter the account id that will receive the money: ");
@@ -74,7 +71,6 @@ public class Menu {
     }
 
     public static void deposit() {
-        AccountDao accountDao = DaoFactory.createAccountDao();
         System.out.print("Enter the account id: ");
         Integer id = scanner.nextInt();
         System.out.print("Enter the deposit amount: ");
@@ -86,7 +82,6 @@ public class Menu {
     }
 
     public static void withdraw() {
-        AccountDao accountDao = DaoFactory.createAccountDao();
         System.out.print("Enter the account id: ");
         Integer id = scanner.nextInt();
         System.out.print("Enter the withdraw amount: ");
@@ -98,11 +93,9 @@ public class Menu {
     }
 
     public static void listAll() {
-        AccountDao accountDao = DaoFactory.createAccountDao();
-
         List<Account> list = accountDao.findAll();
-
         list.forEach(System.out::println);
+
     }
 
     public static void menu() throws ParseException {
@@ -138,7 +131,7 @@ public class Menu {
                 listAll();
             }
             if (choice == 6) {
-            	System.out.println("END");
+            	System.out.println("--END--");
             	break;
             }
         }

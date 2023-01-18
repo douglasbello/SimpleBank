@@ -67,11 +67,8 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                ", balance= R$" + String.format("%.2f",balance) +
-                ", holder=" + holder +
-                '}';
+    	return "Account id = " + id + ", account number = " + number + ", balance= R$" + String.format("%.2f",balance) + "\n" +
+    			"Holder = " + holder + "\n";
+    			
     }
 }

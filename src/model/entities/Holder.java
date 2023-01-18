@@ -56,11 +56,6 @@ public class Holder implements Serializable {
 
     @Override
     public String toString() {
-        return "{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", document='" + document + '\'' +
-                ", birthDate=" + birthDate +
-                '}';
+    	return "id = " + id + ", name = " + name + ", document = " + document + ", birth date = " + birthDate;
     }
 }
