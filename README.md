@@ -1,6 +1,6 @@
 # 🔖 Sobre o projeto
 
-O projeto **ATM** é um projeto simples que foi feito com o intuito de colocar em prática o paradigma de Programação Orientada a Objetos, Driver JDBC e a design pattern DAO.
+O projeto **ATM** é um projeto simples que foi feito com o intuito de colocar em prática o paradigma de Programação Orientada a Objetos, banco de dados MySQL, Driver JDBC e a design pattern DAO (Data Acess Object).
 
 Este projeto realiza operações simples que são: cadastro de contas, depósitos, saques, transferências e listagem de todas as contas cadastradas.
 
