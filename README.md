@@ -38,9 +38,9 @@ Este projeto realiza operações simples que são: cadastro de contas, depósito
 ---
 
 ```bash
-    $ git clone git@github.com:douglasbello/bank-management-software.git
+    $ git clone git@github.com:douglasbello/atm.git
 
-    $ cd bank-management-software/src/application
+    $ cd atm/src/application
 
     $ javac Bank.java
 
