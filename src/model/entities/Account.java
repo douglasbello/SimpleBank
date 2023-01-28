@@ -28,12 +28,6 @@ public class Account implements Serializable {
         this.holder = holder;
     }
 
-    public Account(String number, Holder holder, Double balance) {
-        this.number = number;
-        this.holder = holder;
-        this.balance = balance;
-    }
-
     public String getNumber() {
         return number;
     }
@@ -67,8 +61,8 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-    	return "Account id = " + id + ", account number = " + number + ", balance= R$" + String.format("%.2f",balance) + "\n" +
+    	return "Account id = " + id + ", account number = " + number + ", balance = R$" + String.format("%.2f",
+                balance) + "\n" +
     			"Holder = " + holder + "\n";
-    			
     }
 }

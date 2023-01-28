@@ -1,8 +1,6 @@
 package model.dao;
 
 import model.entities.Account;
-import model.entities.Holder;
-
 import java.util.List;
 
 public interface AccountDao {

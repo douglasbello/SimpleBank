@@ -2,8 +2,6 @@ package application;
 
 import java.text.ParseException;
 import java.util.Locale;
-
-import db.DB;
 import model.utils.Menu;
 
 public class Bank {

@@ -4,9 +4,12 @@ import db.DB;
 import db.DBException;
 import model.dao.HolderDao;
 import model.entities.Holder;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
 
 public class HolderDaoJDBC implements HolderDao {
     private final Connection conn;
@@ -16,7 +19,6 @@ public class HolderDaoJDBC implements HolderDao {
     }
     @Override
     public void insert(Holder hd) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         PreparedStatement st = null;
 
         try {

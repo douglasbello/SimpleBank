@@ -5,9 +5,15 @@ import db.DBException;
 import model.dao.AccountDao;
 import model.entities.Account;
 import model.entities.Holder;
-
-import java.sql.*;
-import java.util.*;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class AccountDaoJDBC implements AccountDao {
     private final Connection conn;
@@ -57,7 +63,6 @@ public class AccountDaoJDBC implements AccountDao {
     @Override
     public void withdraw(Account obj,Double amount) {
         obj.withdraw(amount);
-
         update(obj);
     }
 
@@ -68,6 +73,7 @@ public class AccountDaoJDBC implements AccountDao {
         update(obj);
     }
 
+    @Override
     public void update(Account obj) {
         PreparedStatement st = null;
 
@@ -85,8 +91,8 @@ public class AccountDaoJDBC implements AccountDao {
         } finally {
             DB.closeStatement(st);
         }
-
     }
+
 
     public void transfer(Account acc1,Account acc2,Double amount) {
         acc1.withdraw(amount);
