@@ -18,7 +18,7 @@ Este projeto realiza operações simples que são: cadastro de contas, depósito
 ## 📊 Diagrama do modelo DAO utilizado no projeto
 
 <h1>
-    <img src="public/dtomodel.png">
+    <img src="public/daomodel.png">
 </h1>
 
 ## 🚀 Tecnologias utilizadas no projeto
