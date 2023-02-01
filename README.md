@@ -41,9 +41,8 @@ Este projeto realiza operações simples que são: cadastro de contas, depósito
     $ git clone git@github.com:douglasbello/atm.git
 
     $ cd atm/src/application
-
-    $ javac Bank.java
-
-    $ java Bank.java
+    
 ```
+
+> Agora rode o projeto em uma IDE.
 
