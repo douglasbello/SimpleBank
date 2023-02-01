@@ -39,8 +39,6 @@ Este projeto realiza operações simples que são: cadastro de contas, depósito
 
 ```bash
     $ git clone git@github.com:douglasbello/atm.git
-
-    $ cd atm/src/application
     
 ```
 
