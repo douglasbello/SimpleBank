@@ -41,5 +41,5 @@ Este projeto realiza operações simples que são: cadastro de contas, depósito
     $ git clone git@github.com:douglasbello/atm.git  
 ```
 
-> Agora rode o projeto em uma IDE.
+> Execute o projeto em uma IDE.
 
